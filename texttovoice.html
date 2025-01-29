@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Text-to-Voice Generator  </title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #100f0f;
+            }
+            
+            .container{
+                text-align: center;
+                background-color: #eaede9;
+                padding: 50px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+                #textinput{
+                    height: 120px;
+                    width: 280px;
+                }
+                
+
+                button{
+                    height: 30px;
+                    width: 180px;
+                    border-radius: 20px;
+                    background-color: rgb(165, 180, 180);
+            
+                }
+                button:hover{
+                    background-color: rgb(86, 88, 90);
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Text-to-Voice Convertor</h1><br><br>
+           <textarea  id="textinput" placeholder="type something..."></textarea>
+           <br>
+           <br>
+           <button onclick="speakText()">convert to voice</button>
+
+        </div>
+        <script>
+            function speakText(){
+                const text = document.getElementById("textinput").value;
+                if(text.trim() === ""){
+                    alert("please Enter Some Text");
+                    return;
+                }
+            
+
+            const utterance = new SpeechSynthesisUtterance(text);
+
+            //speak the text 
+            window.speechSynthesis.speak(utterance);
+            }
+        </script>
+    </body>
+</html>
